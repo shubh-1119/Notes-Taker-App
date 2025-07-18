@@ -1,0 +1,333 @@
+@charset "UTF-8";
+
+/* Basic Reset & Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Fallback to a generic sans-serif */
+    background-color: #f4f7f6; /* Light grey background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Main Application Layout */
+.notes-app {
+    display: flex;
+    gap: 30px; /* Space between sidebar and notes display */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Sidebar (New Note Form) */
+.sidebar {
+    flex: 1; /* Allows it to grow/shrink */
+    min-width: 300px; /* Minimum width for the sidebar */
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h2 {
+    color: #34495e;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: inherit; /* Inherit font from body */
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Space between buttons */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Blue */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Grey */
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+}
+
+.btn-edit {
+    background-color: #ffc107; /* Yellow */
+    color: #333;
+    padding: 8px 15px; /* Smaller padding for action buttons */
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545; /* Red */
+    color: #fff;
+    padding: 8px 15px;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+
+/* Notes Display Section */
+.notes-display {
+    flex: 2; /* Takes more space than sidebar */
+    min-width: 400px; /* Minimum width for notes display */
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.notes-display h2 {
+    color: #34495e;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.note-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.note-card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    word-wrap: break-word; /* Prevents long words from overflowing */
+}
+
+.note-card p {
+    color: #555;
+    font-size: 0.95em;
+    flex-grow: 1; /* Allows content to take available space */
+    margin-bottom: 15px;
+    max-height: 150px; /* Limit height for preview */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for hidden text */
+}
+
+.note-card small {
+    color: #888;
+    font-size: 0.8em;
+    margin-top: auto; /* Push to the bottom */
+}
+
+.note-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .notes-app {
+        flex-direction: column; /* Stack sidebar and notes display vertically */
+    }
+
+    .sidebar,
+    .notes-display {
+        min-width: unset; /* Remove min-width for smaller screens */
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .sidebar h2,
+    .notes-display h2 {
+        font-size: 1.5em;
+    }
+
+    .notes-grid {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+    }
+
+    .btn {
+        width: 100%; /* Full width buttons */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .form-group button:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
+
+
+/* Edit page style */
+
+.edit-section {
+    flex: 1; /* Allows it to take available space */
+    min-width: 400px; /* Adjust as needed */
+    background-color: #f9f9f9;
+    padding: 30px; /* Slightly more padding for a focused view */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin: 0 auto; /* Center the section if it's the only one in main */
+    width: 100%; /* Ensure it takes full width within the container if no other siblings */
+    max-width: 700px; /* Limit max-width for better readability */
+}
+
+.edit-section h2 {
+    color: #34495e;
+    margin-bottom: 25px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.edit-section #current-note-title-display {
+    color: #007bff;
+}
+
+/* Ensure textarea on edit page is taller */
+.edit-section textarea {
+    min-height: 200px; /* Make the textarea taller for editing */
+}
+
+/* Adjust button spacing if needed for edit form */
+.edit-section .btn {
+    margin-top: 15px; /* Add some space above buttons */
+}
+
+/* Responsive adjustment for edit-section */
+@media (max-width: 900px) {
+    .edit-section {
+        min-width: unset;
+        margin: 0; /* Remove auto margin on small screens */
+    }
+}
+
+/* Basic styling for the message */
+.message-container {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message-success {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green text */
+    border: 1px solid #c3e6cb;
+}
+
+.message-error {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb;
+}
